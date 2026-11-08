@@ -1,0 +1,16 @@
+{
+  "name": "pi-swarm-hub",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.ts",
+    "deploy": "cf deploy"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^2.0.0-beta.v.12",
+    "@cloudflare/workers-types": "^4.20251101.0",
+    "cf": "*",
+    "vite": "^8.3.6"
+  }
+}

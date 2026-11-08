@@ -1,0 +1,10 @@
+node_modules/
+.env*
+*.token
+.swarm/
+dist/
+.cf/
+.wrangler/
+.cloudflare/
+.dev.vars*
+eval/results/

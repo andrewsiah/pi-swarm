@@ -1,0 +1,74 @@
+{
+  "name": "@andrewsiah/pi-swarm",
+  "version": "0.1.0",
+  "description": "Intercom for coding agents across machines and harnesses: durable mailboxes (mail waits for offline agents), ask/reply, presence and work markers. pi extension, CLI, and MCP server for Claude Code and Codex.",
+  "license": "MIT",
+  "author": "Andrew Siah",
+  "homepage": "https://github.com/andrewsiah/pi-swarm#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewsiah/pi-swarm.git"
+  },
+  "bugs": {
+    "url": "https://github.com/andrewsiah/pi-swarm/issues"
+  },
+  "type": "module",
+  "bin": {
+    "pi-swarm": "bin/pi-swarm.mjs",
+    "pi-swarm-mcp": "bin/pi-swarm-mcp.mjs"
+  },
+  "files": [
+    "bin",
+    "client",
+    "extension",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "keywords": [
+    "pi-package",
+    "pi",
+    "pi-coding-agent",
+    "extension",
+    "agents",
+    "multi-agent",
+    "intercom",
+    "messaging",
+    "mailbox",
+    "mcp",
+    "claude-code",
+    "codex"
+  ],
+  "pi": {
+    "extensions": [
+      "./extension/index.ts"
+    ],
+    "video": "https://github.com/andrewsiah/pi-swarm/raw/refs/heads/main/docs/media/pi-swarm-demo.mp4"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "node --test hub/test/*.test.ts test/*.test.mjs",
+    "eval": "node eval/run.mjs",
+    "hub:local": "node hub/src/node-server.ts"
+  },
+  "engines": {
+    "node": ">=22.18"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-ai": "*",
+    "@earendil-works/pi-coding-agent": "*",
+    "typebox": "*"
+  },
+  "peerDependenciesMeta": {
+    "@earendil-works/pi-ai": {
+      "optional": true
+    },
+    "@earendil-works/pi-coding-agent": {
+      "optional": true
+    },
+    "typebox": {
+      "optional": true
+    }
+  }
+}
