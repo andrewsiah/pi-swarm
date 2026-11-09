@@ -1,0 +1,28 @@
+name: Publish to npm
+on:
+  release:
+    types: [published]
+permissions:
+  contents: read
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          registry-url: https://registry.npmjs.org
+      - name: Use npm with trusted publishing support
+        run: npm install --global 'npm@^11.5.1'
+      - name: Check release version
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: node --input-type=module -e 'import assert from "node:assert/strict"; import fs from "node:fs"; const pkg = JSON.parse(fs.readFileSync("package.json", "utf8")); assert.equal(process.env.RELEASE_TAG, `v${pkg.version}`);'
+      - run: npm test
+      - run: npm publish --provenance --access public
